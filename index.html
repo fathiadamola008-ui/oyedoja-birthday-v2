@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Happy Birthday, Oyedoja</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+--cream: #f7f1e7;
+--cream-card: #fcf8f2;
+--crimson: #641423;
+--crimson-deep: #480c18;
+--gold: #d4af6a;
+--ink: #271519;
+--muted: #6c5358;
+--border-cream: rgba(100, 20, 35, 0.16);
+--border-dark: rgba(247, 241, 231, 0.22);
+--shadow: 0 18px 42px rgba(39, 21, 25, 0.11);
+}
+
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+html {
+scroll-behavior: smooth;
+}
+
+body {
+background-color: var(--cream);
+color: var(--ink);
+font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+line-height: 1.7;
+padding-bottom: 92px;
+overflow-x: hidden;
+}
+
+h1, h2, h3, .serif {
+font-family: 'Cormorant Garamond', Georgia, serif;
+font-weight: 600;
+letter-spacing: -0.01em;
+}
+
+/* 1. Cream & Burgundy Password Lock Screen */
+#lock-screen {
+position: fixed;
+inset: 0;
+z-index: 200;
+background-color: var(--cream);
+color: var(--crimson);
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 24px;
+text-align: center;
+transition: opacity 0.45s ease, visibility 0.45s ease;
+}
+
+#lock-screen.hidden {
+opacity: 0;
+visibility: hidden;
+pointer-events: none;
+}
+
+.lock-card {
+width: 100%;
+max-width: 390px;
+background: var(--cream-card);
+border: 1px solid var(--border-cream);
+border-radius: 24px;
+padding: 40px 26px;
+box-shadow: var(--shadow);
+}
+
+.lock-eyebrow {
+font-size: 0.72rem;
+text-transform: uppercase;
+letter-spacing: 0.2em;
+color: var(--muted);
+margin-bottom: 10px;
+font-weight: 600;
+}
+
+.lock-card h1 {
+font-size: 2.35rem;
+line-height: 1.1;
+color: var(--crimson);
+margin-bottom: 10px;
+}
+
+.lock-card p {
+font-size: 0.92rem;
+color: var(--muted);
+margin-bottom: 24px;
+}
+
+.lock-form {
+display: flex;
+flex-direction: column;
+gap: 12px;
+}
+
+.lock-input {
+width: 100%;
+padding: 14px 16px;
+border-radius: 12px;
+border: 1px solid rgba(100, 20, 35, 0.28);
+background: #fff;
+color: var(--ink);
+font-size: 1rem;
+text-align: center;
+outline: none;
+}
+
+.lock-input:focus {
+border-color: var(--crimson);
+box-shadow: 0 0 0 3px rgba(100, 20, 35, 0.14);
+}
+
+.btn-burgundy {
+background: var(--crimson);
+color: var(--cream);
+border: none;
+border-radius: 12px;
+padding: 14px 20px;
+font-size: 0.96rem;
+font-weight: 600;
+letter-spacing: 0.03em;
+cursor: pointer;
+transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.btn-burgundy:hover {
+background: var(--crimson-deep);
+}
+
+.btn-burgundy:active {
+transform: scale(0.98);
+}
+
+.lock-error {
+min-height: 20px;
+font-size: 0.84rem;
+color: #a61c33;
+margin-top: 2px;
+}
+
+/* Main Content Wrapper */
+#main-content {
+display: none;
+}
+
+#main-content.visible {
+display: block;
+animation: fadeIn 0.7s ease forwards;
+}
+
+@keyframes fadeIn {
+from { opacity: 0; }
+to { opacity: 1; }
+}
+
+/* 2. Crimson Monogram Splash Banner */
+.monogram-banner {
+background: var(--crimson);
+color: var(--cream);
+padding: 46px 20px 38px;
+text-align: center;
+border-bottom: 1px solid var(--border-dark);
+}
+
+.monogram-box {
+width: 68px;
+height: 68px;
+margin: 0 auto 14px;
+border: 1.5px solid var(--gold);
+display: flex;
+align-items: center;
+justify-content: center;
+font-family: 'Cormorant Garamond', serif;
+font-size: 2.3rem;
+font-weight: 600;
+color: var(--cream);
+letter-spacing: 0.02em;
+}
+
+.monogram-sub {
+font-size: 0.72rem;
+letter-spacing: 0.22em;
+text-transform: uppercase;
+color: rgba(247, 241, 231, 0.78);
+}
+
+/* 3. Full-Bleed Hero Section */
+.hero-section {
+position: relative;
+min-height: 82vh;
+display: flex;
+align-items: flex-end;
+justify-content: center;
+text-align: center;
+color: #fff;
+background-color: var(--crimson-deep);
+overflow: hidden;
+}
+
+.hero-bg {
+position: absolute;
+inset: 0;
+width: 100%;
+height: 100%;
+object-fit: cover;
+object-position: center top;
+filter: brightness(0.72);
+}
+
+.hero-gradient {
+position: absolute;
+inset: 0;
+background: linear-gradient(
+to top,
+rgba(46, 8, 16, 0.92) 0%,
+rgba(46, 8, 16, 0.42) 52%,
+rgba(46, 8, 16, 0.22) 100%
+);
+}
+
+.hero-content {
+position: relative;
+z-index: 2;
+max-width: 580px;
+padding: 48px 24px 56px;
+}
+
+.hero-kicker {
+font-family: 'Cormorant Garamond', serif;
+font-style: italic;
+font-size: 1.45rem;
+color: var(--gold);
+margin-bottom: 4px;
+}
+
+.hero-content h1 {
+font-size: clamp(3rem, 11vw, 4.6rem);
+line-height: 1.02;
+color: #fff;
+margin-bottom: 10px;
+}
+
+.hero-date {
+font-size: 0.8rem;
+letter-spacing: 0.22em;
+text-transform: uppercase;
+color: rgba(247, 241, 231, 0.88);
+margin-bottom: 26px;
+}
+
+.btn-outline-cream {
+display: inline-block;
+padding: 13px 28px;
+border: 1px solid var(--cream);
+background: rgba(247, 241, 231, 0.12);
+backdrop-filter: blur(6px);
+color: var(--cream);
+text-decoration: none;
+border-radius: 999px;
+font-size: 0.9rem;
+font-weight: 500;
+letter-spacing: 0.06em;
+transition: background 0.2s ease, color 0.2s ease;
+}
+
+.btn-outline-cream:hover {
+background: var(--cream);
+color: var(--crimson);
+}
+
+/* Containers & Alternating Sections */
+.container {
+max-width: 720px;
+margin: 0 auto;
+padding: 0 22px;
+}
+
+.section-cream {
+background: var(--cream);
+color: var(--ink);
+padding: 64px 0;
+}
+
+.section-crimson {
+background: var(--crimson);
+color: var(--cream);
+padding: 64px 0;
+}
+
+.section-eyebrow {
+font-size: 0.72rem;
+text-transform: uppercase;
+letter-spacing: 0.2em;
+font-weight: 600;
+margin-bottom: 8px;
+display: block;
+}
+
+.section-cream .section-eyebrow {
+color: var(--muted);
+}
+
+.section-crimson .section-eyebrow {
+color: var(--gold);
+}
+
+.section-title {
+font-size: clamp(2.1rem, 6vw, 2.8rem);
+line-height: 1.12;
+margin-bottom: 16px;
+}
+
+.section-cream .section-title {
+color: var(--crimson);
+}
+
+.section-crimson .section-title {
+color: #fff;
+}
+
+.editorial-text {
+font-size: 0.98rem;
+margin-bottom: 28px;
+}
+
+/* Editorial Photo Frame */
+.editorial-frame {
+background: #fff;
+padding: 12px 12px 16px;
+border-radius: 6px;
+box-shadow: var(--shadow);
+border: 1px solid var(--border-cream);
+max-width: 440px;
+margin: 0 auto;
+}
+
+.section-crimson .editorial-frame {
+background: var(--cream-card);
+color: var(--ink);
+}
+
+.editorial-frame img {
+width: 100%;
+aspect-ratio: 4 / 5;
+object-fit: cover;
+display: block;
+border-radius: 3px;
+}
+
+.frame-caption {
+margin-top: 12px;
+text-align: center;
+font-family: 'Cormorant Garamond', serif;
+font-style: italic;
+font-size: 1.12rem;
+color: var(--muted);
+}
+
+/* Gallery Grid (7 Moments: photo4 - photo10) */
+.moments-grid {
+display: grid;
+grid-template-columns: 1fr;
+gap: 28px;
+margin-top: 28px;
+}
+
+@media (min-width: 600px) {
+.moments-grid {
+grid-template-columns: repeat(2, 1fr);
+gap: 24px;
+}
+}
+
+/* Interactive Envelope & Wax Seal */
+.envelope-wrapper {
+text-align: center;
+max-width: 580px;
+margin: 0 auto;
+}
+
+.envelope-card {
+margin-top: 24px;
+background: var(--crimson);
+color: var(--cream);
+border-radius: 18px;
+padding: 36px 24px;
+position: relative;
+box-shadow: var(--shadow);
+cursor: pointer;
+border: 1px solid rgba(212, 175, 106, 0.35);
+transition: transform 0.2s ease;
+}
+
+.envelope-card:active {
+transform: scale(0.99);
+}
+
+.wax-seal {
+width: 62px;
+height: 62px;
+margin: 0 auto 14px;
+border-radius: 50%;
+background: radial-gradient(circle at 30% 30%, #e6c684, #b3873b);
+color: var(--crimson-deep);
+display: flex;
+align-items: center;
+justify-content: center;
+font-family: 'Cormorant Garamond', serif;
+font-size: 1.65rem;
+font-weight: 700;
+box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+border: 2px solid rgba(255, 245, 220, 0.5);
+}
+
+.envelope-prompt {
+font-family: 'Cormorant Garamond', serif;
+font-size: 1.45rem;
+margin-bottom: 4px;
+}
+
+.envelope-hint {
+font-size: 0.82rem;
+color: rgba(247, 241, 231, 0.78);
+}
+
+.letter-paper {
+display: none;
+margin-top: 22px;
+background: #fffdf9;
+color: var(--ink);
+border: 1px solid var(--border-cream);
+border-radius: 16px;
+padding: 32px 24px;
+text-align: left;
+box-shadow: var(--shadow);
+}
+
+@media (min-width: 600px) {
+.letter-paper {
+padding: 42px 40px;
+}
+}
+
+.letter-paper.open {
+display: block;
+animation: slideReveal 0.45s ease;
+}
+
+@keyframes slideReveal {
+from { opacity: 0; transform: translateY(10px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+.letter-salutation {
+font-family: 'Cormorant Garamond', serif;
+font-size: 1.75rem;
+font-weight: 600;
+color: var(--crimson);
+margin-bottom: 18px;
+}
+
+.letter-paper p {
+margin-bottom: 16px;
+font-size: 0.97rem;
+color: var(--ink);
+}
+
+.letter-closing {
+margin-top: 24px;
+font-family: 'Cormorant Garamond', serif;
+font-style: italic;
+font-size: 1.35rem;
+color: var(--crimson);
+}
+
+/* Prayer & Finale Section */
+.prayer-box {
+max-width: 580px;
+margin: 0 auto;
+text-align: center;
+}
+
+.prayer-quote {
+font-family: 'Cormorant Garamond', serif;
+font-size: 1.42rem;
+line-height: 1.65;
+color: var(--cream);
+margin: 18px 0 28px;
+}
+
+.finale-divider {
+width: 48px;
+height: 1px;
+background: var(--gold);
+margin: 28px auto;
+}
+
+.finale-sign {
+font-family: 'Cormorant Garamond', serif;
+font-style: italic;
+font-size: 1.5rem;
+color: var(--gold);
+}
+
+/* Floating Burgundy Bottom Audio Bar */
+.music-bar {
+position: fixed;
+bottom: 14px;
+left: 50%;
+transform: translateX(-50%);
+width: calc(100% - 28px);
+max-width: 480px;
+background: var(--crimson-deep);
+color: var(--cream);
+border: 1px solid rgba(212, 175, 106, 0.35);
+border-radius: 999px;
+padding: 9px 14px;
+display: flex;
+align-items: center;
+gap: 12px;
+z-index: 100;
+box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.music-toggle {
+width: 38px;
+height: 38px;
+border-radius: 50%;
+border: none;
+background: var(--cream);
+color: var(--crimson-deep);
+font-weight: 700;
+font-size: 0.85rem;
+cursor: pointer;
+flex-shrink: 0;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.music-meta {
+min-width: 0;
+flex: 1;
+}
+
+.music-track {
+font-size: 0.86rem;
+font-weight: 600;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+color: #fff;
+}
+
+.music-artist {
+font-size: 0.72rem;
+color: rgba(247, 241, 231, 0.75);
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+}
+</style>
+</head>
+<body>
+
+<!-- Password Lock Screen -->
+<div id="lock-screen">
+<div class="lock-card">
+<div class="lock-eyebrow">27 November 2026</div>
+<h1>A gift, just for you</h1>
+<p>Please enter the password you were given.</p>
+<form class="lock-form" id="unlock-form">
+<input
+type="password"
+id="password-input"
+class="lock-input"
+placeholder="Enter password..."
+autocomplete="off"
+required
+/>
+<button type="submit" class="btn-burgundy">Open</button>
+<div class="lock-error" id="lock-error"></div>
+</form>
+</div>
+</div>
+
+<!-- Main Birthday Experience -->
+<main id="main-content">
+
+<!-- Monogram Splash -->
+<div class="monogram-banner">
+<div class="monogram-box">O</div>
+<div class="monogram-sub">A Birthday Keepsake</div>
+</div>
+
+<!-- Full-Bleed Hero -->
+<section class="hero-section">
+<img src="photo1.jpg" alt="Oyedoja" class="hero-bg" />
+<div class="hero-gradient"></div>
+<div class="hero-content">
+<div class="hero-kicker">Happy birthday</div>
+<h1>Oyedoja</h1>
+<div class="hero-date">27 November 2026</div>
+<a href="#celebrating" class="btn-outline-cream">Open your gift</a>
+</div>
+</section>
+
+<!-- Cream Editorial Section -->
+<section id="celebrating" class="section-cream">
+<div class="container">
+<span class="section-eyebrow">Chapter One</span>
+<h2 class="section-title">Celebrating Oyedoja</h2>
+<p class="editorial-text">
+Today is all about honoring the grace, resilience, and quiet strength you carry every single day. Here is a small space put together just to remind you how deeply appreciated you are.
+</p>
+
+<figure class="editorial-frame">
+<img src="photo2.jpg" alt="Celebrating Oyedoja" />
+<figcaption class="frame-caption">Grace in every season</figcaption>
+</figure>
+</div>
+</section>
+
+<!-- Crimson Highlight Card -->
+<section class="section-crimson">
+<div class="container">
+<span class="section-eyebrow">For My Elder Sister</span>
+<h2 class="section-title">A little love message</h2>
+<p class="editorial-text" style="color: rgba(247, 241, 231, 0.88);">
+No matter how busy life gets, watching the way you show up for family and carry yourself with dignity never goes unnoticed. You deserve every bit of joy today brings.
+</p>
+
+<figure class="editorial-frame">
+<img src="photo3.jpg" alt="A little love message" />
+<figcaption class="frame-caption">Always proud to call you my sister</figcaption>
+</figure>
+</div>
+</section>
+
+<!-- Cream Gallery: 7 Moments (photo4 - photo10) -->
+<section class="section-cream">
+<div class="container">
+<span class="section-eyebrow">Snapshots</span>
+<h2 class="section-title">A collection of little moments</h2>
+<p class="editorial-text">
+Every frame captures a glimpse of your warmth, your smile, and the light you bring wherever you go.
+</p>
+
+<div class="moments-grid">
+<figure class="editorial-frame">
+<img src="photo4.jpg" alt="Moment 1" />
+<figcaption class="frame-caption">Effortless poise</figcaption>
+</figure>
+<figure class="editorial-frame">
+<img src="photo5.jpg" alt="Moment 2" />
+<figcaption class="frame-caption">A quiet moment of calm</figcaption>
+</figure>
+<figure class="editorial-frame">
+<img src="photo6.jpg" alt="Moment 3" />
+<figcaption class="frame-caption">Radiating warmth</figcaption>
+</figure>
+<figure class="editorial-frame">
+<img src="photo7.jpg" alt="Moment 4" />
+<figcaption class="frame-caption">Unmatched energy</figcaption>
+</figure>
+<figure class="editorial-frame">
+<img src="photo8.jpg" alt="Moment 5" />
+<figcaption class="frame-caption">Captured in full bloom</figcaption>
+</figure>
+<figure class="editorial-frame">
+<img src="photo9.jpg" alt="Moment 6" />
+<figcaption class="frame-caption">Shining bright</figcaption>
+</figure>
+<figure class="editorial-frame">
+<img src="photo10.jpg" alt="Moment 7" />
+<figcaption class="frame-caption">Here is to many more years</figcaption>
+</figure>
+</div>
+</div>
+</section>
+
+<!-- Envelope & Letter Reveal -->
+<section class="section-cream" style="padding-top: 10px;">
+<div class="container">
+<div class="envelope-wrapper">
+<span class="section-eyebrow">Sealed For You</span>
+<h2 class="section-title">A letter from my heart</h2>
+
+<div class="envelope-card" id="envelope-card" role="button" tabindex="0">
+<div class="wax-seal">O</div>
+<div class="envelope-prompt" id="envelope-title">Tap the seal to open your letter</div>
+<div class="envelope-hint" id="envelope-hint">Written especially for 27 November 2026</div>
+</div>
+
+<article class="letter-paper" id="letter-paper">
+<div class="letter-salutation">To my sister, Oyedoja,</div>
+<p>
+Happy birthday. Having you as my elder sister has shaped so much of how I see life, kindness, and strength. You’ve carried responsibilities, moments of pressure, and everyday expectations with a grace that often goes unnoticed, yet you still show up with heart and care. Looking back at how much you’ve grown and how much you give, I’m genuinely grateful to have you in my corner.
+</p>
+<p>
+There are lessons I’ve picked up just from watching how you handle things—how you push through when days feel heavy, how you care deeply for family, and how you keep moving forward even when the path isn’t completely smooth. Even when life gets busy or we have our moments, I respect who you are and the warmth you bring into our home.
+</p>
+<p>
+As you step into this new year, I pray that peace stays close to you and that every weight you’ve been carrying feels a little lighter. May good health, clarity, answered prayers, and open doors meet you at every turn. I hope you get moments of real rest, genuine laughter, and quiet wins that remind you how valued and loved you are.
+</p>
+<p>
+Thank you for being my sister, Oyedoja. May this new chapter be kinder to you, brighter in every way, and full of reasons to smile. Happy birthday—today belongs to you.
+</p>
+<div class="letter-closing">With love, always</div>
+</article>
+</div>
+</div>
+</section>
+
+<!-- Crimson Prayer & Closing Card -->
+<section class="section-crimson">
+<div class="container">
+<div class="prayer-box">
+<span class="section-eyebrow">Blessings</span>
+<h2 class="section-title">A prayer for you</h2>
+<p class="prayer-quote">
+“May this new year surround you with steady peace, sound health, favor that finds you effortlessly, and joy that stays long after today.”
+</p>
+<div class="finale-divider"></div>
+<div class="finale-sign">Happy Birthday, Oyedoja — 27.11.2026</div>
+</div>
+</div>
+</section>
+
+</main>
+
+<!-- Floating Bottom Audio Bar -->
+<audio id="bg-audio" src="song.mp3" loop preload="metadata"></audio>
+<div class="music-bar">
+<button type="button" class="music-toggle" id="music-toggle-btn" aria-label="Play or pause music">▶</button>
+<div class="music-meta">
+<div class="music-track">For the rest of my life</div>
+<div class="music-artist" id="music-status">Maher Zain</div>
+</div>
+</div>
+
+<script>
+const SECRET_PASSWORD = "my sister";
+
+const lockScreen = document.getElementById("lock-screen");
+const mainContent = document.getElementById("main-content");
+const unlockForm = document.getElementById("unlock-form");
+const passwordInput = document.getElementById("password-input");
+const lockError = document.getElementById("lock-error");
+
+const audio = document.getElementById("bg-audio");
+const musicBtn = document.getElementById("music-toggle-btn");
+const musicStatus = document.getElementById("music-status");
+
+const envelopeCard = document.getElementById("envelope-card");
+const envelopeTitle = document.getElementById("envelope-title");
+const envelopeHint = document.getElementById("envelope-hint");
+const letterPaper = document.getElementById("letter-paper");
+
+unlockForm.addEventListener("submit", function (e) {
+e.preventDefault();
+const entered = passwordInput.value.trim().toLowerCase().replace(/\s+/g, " ");
+
+if (entered === SECRET_PASSWORD) {
+lockError.textContent = "";
+lockScreen.classList.add("hidden");
+mainContent.classList.add("visible");
+window.scrollTo({ top: 0, behavior: "instant" });
+
+audio.play().then(() => {
+updateMusicUI(true);
+}).catch(() => {
+updateMusicUI(false);
+});
+} else {
+lockError.textContent = "Incorrect password. Please try again.";
+passwordInput.select();
+}
+});
+
+function updateMusicUI(isPlaying) {
+if (isPlaying) {
+musicBtn.textContent = "❚❚";
+musicStatus.textContent = "Maher Zain • Now playing";
+} else {
+musicBtn.textContent = "▶";
+musicStatus.textContent = "Maher Zain";
+}
+}
+
+musicBtn.addEventListener("click", function () {
+if (audio.paused) {
+audio.play().then(() => updateMusicUI(true)).catch(() => {
+musicStatus.textContent = "Add song.mp3 to play music";
+});
+} else {
+audio.pause();
+updateMusicUI(false);
+}
+});
+
+audio.addEventListener("ended", () => updateMusicUI(false));
+
+function toggleLetter() {
+const isOpen = letterPaper.classList.toggle("open");
+envelopeTitle.textContent = isOpen ? "Letter opened" : "Tap the seal to open your letter";
+envelopeHint.textContent = isOpen ? "Tap again to fold" : "Written especially for 27 November 2026";
+if (isOpen) {
+letterPaper.scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
+}
+
+envelopeCard.addEventListener("click", toggleLetter);
+envelopeCard.addEventListener("keydown", function (e) {
+if (e.key === "Enter" || e.key === " ") {
+e.preventDefault();
+toggleLetter();
+}
+});
+</script>
+</body>
+</html>
